@@ -1,0 +1,889 @@
+    /* Mobile-first responsive design */ 
+    @media (max-width: 768px) { 
+        .container { padding-left: 1rem; padding-right: 1rem; } 
+        .nav-btn { font-size: 0.875rem; padding: 0.75rem 0.5rem; } 
+        .card-shadow { box-shadow: 0 4px 15px rgba(0,0,0,0.08); } 
+        .grid-mobile { grid-template-columns: 1fr; } 
+        .text-mobile { font-size: 1.5rem; } 
+    } 
+     
+    /* Enhanced touch targets for mobile */ 
+    @media (max-width: 640px) { 
+        button, .nav-btn { min-height: 44px; } 
+        input, select, textarea { min-height: 44px; } 
+        .quick-action-btn { padding: 1.5rem 1rem; } 
+    } 
+     
+    /* App-like interface */ 
+    .app-container { max-width: 100vw; overflow-x: hidden; } 
+    .mobile-header { position: sticky; top: 0; z-index: 40; } 
+    .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; } 
+     
+    /* USSD simulation styles */ 
+    .ussd-screen {  
+        background: #000;  
+        color: #00ff00;  
+        font-family: 'Courier New', monospace;  
+        border-radius: 0.5rem; 
+        padding: 1rem; 
+        min-height: 200px; 
+    } 
+</style
+
+<!-- Navigation -- 
+<nav class="bg-white shadow-sm border-b" 
+    <div class="container mx-auto px-6" 
+        <div class="flex space-x-8" 
+            <button onclick="showSection('dashboard')" class="nav-btn py-4 px-2 border-b-2 border-purple-500 text-purple-600 font-medium"Dashboard</button 
+            <button onclick="showSection('transactions')" class="nav-btn py-4 px-2 text-gray-600 hover:text-purple-600"Transactions</button 
+            <button onclick="showSection('commissions')" class="nav-btn py-4 px-2 text-gray-600 hover:text-purple-600"Commission Settings</button 
+            <button onclick="showSection('charges')" class="nav-btn py-4 px-2 text-gray-600 hover:text-purple-600"Charge Management</button 
+            <button onclick="showSection('reports')" class="nav-btn py-4 px-2 text-gray-600 hover:text-purple-600"Reports</button 
+            <button onclick="showSection('customize')" class="nav-btn py-4 px-2 text-gray-600 hover:text-purple-600"Customize</button 
+            <button onclick="showSection('ussd')" class="nav-btn py-4 px-2 text-gray-600 hover:text-purple-600"USSD Portal</button 
+        </div 
+    </div 
+</nav 
+ 
+<!-- Main Content -- 
+<main class="container mx-auto px-6 py-8" 
+    <!-- Dashboard Section -- 
+    <div id="dashboard" class="section animate-fade-in" 
+        <div class="mb-8" 
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6" 
+                <div 
+                    <h2 class="text-3xl font-bold text-gray-800 mb-2"Dashboard Overview</h2 
+                    <p class="text-gray-600"Manage your FinTech operations across Uganda's major telecom networks</p 
+                </div 
+                <div class="mt-4 md:mt-0" 
+                    <div class="w-32 h-20 border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center bg-gray-50 hover:bg-gray-100 cursor-pointer transition-colors" onclick="uploadLogo()" 
+                        <div class="text-center" 
+                            <span class="text-2xl text-gray-400 block"📷</span 
+                            <p class="text-xs text-gray-500 mt-1"Upload Logo</p 
+                        </div 
+                    </div 
+                </div 
+            </div 
+        </div 
+ 
+        <!-- Stats Cards -- 
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8" 
+            <div class="bg-white p-6 rounded-xl card-shadow" 
+                <div class="flex items-center justify-between" 
+                    <div 
+                        <p class="text-sm text-gray-600"Total Revenue</p 
+                        <p class="text-2xl font-bold text-green-600"UGX 45,230,000</p 
+                    </div 
+                    <div class="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center" 
+                        <span class="text-green-600 text-xl"💰</span 
+                    </div 
+                </div 
+            </div 
+            <div class="bg-white p-6 rounded-xl card-shadow" 
+                <div class="flex items-center justify-between" 
+                    <div 
+                        <p class="text-sm text-gray-600"Daily Transactions</p 
+                        <p class="text-2xl font-bold text-blue-600"2,847</p 
+                    </div 
+                    <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center" 
+                        <span class="text-blue-600 text-xl"📊</span 
+                    </div 
+                </div 
+            </div 
+            <div class="bg-white p-6 rounded-xl card-shadow" 
+                <div class="flex items-center justify-between" 
+                    <div 
+                        <p class="text-sm text-gray-600"Commission Earned</p 
+                        <p class="text-2xl font-bold text-purple-600"UGX 1,250,000</p 
+                    </div 
+                    <div class="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center" 
+                        <span class="text-purple-600 text-xl"🎯</span 
+                    </div 
+                </div 
+            </div 
+            <div class="bg-white p-6 rounded-xl card-shadow" 
+                <div class="flex items-center justify-between" 
+                    <div 
+                        <p class="text-sm text-gray-600"Active Users</p 
+                        <p class="text-2xl font-bold text-orange-600"15,432</p 
+                    </div 
+                    <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center" 
+                        <span class="text-orange-600 text-xl"👥</span 
+                    </div 
+                </div 
+            </div 
+        </div 
+ 
+        <!-- Quick Actions -- 
+        <div class="bg-white rounded-xl card-shadow p-6 mb-8" 
+            <h3 class="text-xl font-semibold mb-4"Quick Transaction Portal</h3 
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" 
+                <button onclick="showTransactionModal('withdrawal')" class="p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-purple-500 hover:bg-purple-50 transition-all" 
+                    <div class="text-center" 
+                        <span class="text-3xl mb-2 block"💸</span 
+                        <p class="font-medium"Mobile Money Withdrawal</p 
+                    </div 
+                </button 
+                <button onclick="showTransactionModal('deposit')" class="p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-green-500 hover:bg-green-50 transition-all" 
+                    <div class="text-center" 
+                        <span class="text-3xl mb-2 block"💳</span 
+                        <p class="font-medium"Deposit Funds</p 
+                    </div 
+                </button 
+                <button onclick="showTransactionModal('airtime')" class="p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-500 hover:bg-blue-50 transition-all" 
+                    <div class="text-center" 
+                        <span class="text-3xl mb-2 block"📱</span 
+                        <p class="font-medium"Buy Airtime</p 
+                    </div 
+                </button 
+                <button onclick="showTransactionModal('electricity')" class="p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-yellow-500 hover:bg-yellow-50 transition-all" 
+                    <div class="text-center" 
+                        <span class="text-3xl mb-2 block"⚡</span 
+                        <p class="font-medium"Pay Electric Bill</p 
+                    </div 
+                </button 
+                <button onclick="showTransactionModal('water')" class="p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-cyan-500 hover:bg-cyan-50 transition-all" 
+                    <div class="text-center" 
+                        <span class="text-3xl mb-2 block"💧</span 
+                        <p class="font-medium"Pay Water Bill</p 
+                    </div 
+                </button 
+                <div class="relative group" 
+                    <button onclick="toggleBankDropdown()" class="w-full p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-indigo-500 hover:bg-indigo-50 transition-all" 
+                        <div class="text-center" 
+                            <span class="text-3xl mb-2 block"🏦</span 
+                            <p class="font-medium"Bank Transfer</p 
+                            <span class="text-xs text-gray-500"▼</span 
+                        </div 
+                    </button 
+                    <div id="bankDropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-white border border-gray-200 rounded-lg shadow-lg z-10" 
+                        <button onclick="showTransactionModal('equity')" class="w-full px-4 py-3 text-left hover:bg-gray-50 border-b border-gray-100 flex items-center space-x-3" 
+                            <span class="text-green-600"🏦</span 
+                            <spanEquity Bank</span 
+                        </button 
+                        <button onclick="showTransactionModal('centenary')" class="w-full px-4 py-3 text-left hover:bg-gray-50 border-b border-gray-100 flex items-center space-x-3" 
+                            <span class="text-blue-600"🏦</span 
+                            <spanCentenary Bank</span 
+                        </button 
+                        <button onclick="showTransactionModal('stanbic')" class="w-full px-4 py-3 text-left hover:bg-gray-50 border-b border-gray-100 flex items-center space-x-3" 
+                            <span class="text-red-600"🏦</span 
+                            <spanStanbic Bank</span 
+                        </button 
+                        <button onclick="showTransactionModal('finca')" class="w-full px-4 py-3 text-left hover:bg-gray-50 border-b border-gray-100 flex items-center space-x-3" 
+                            <span class="text-orange-600"🏦</span 
+                            <spanFINCA Bank</span 
+                        </button 
+                        <button onclick="showTransactionModal('dfcu')" class="w-full px-4 py-3 text-left hover:bg-gray-50 flex items-center space-x-3" 
+                            <span class="text-purple-600"🏦</span 
+                            <spanDFCU Bank</span 
+                        </button 
+                    </div 
+                </div 
+            </div 
+        </div 
+    </div 
+ 
+    <!-- Transactions Section -- 
+    <div id="transactions" class="section hidden" 
+        <div class="mb-8" 
+            <h2 class="text-3xl font-bold text-gray-800 mb-2"Transaction History</h2 
+            <p class="text-gray-600"Monitor all financial transactions across networks</p 
+        </div 
+ 
+        <div class="bg-white rounded-xl card-shadow overflow-hidden" 
+            <div class="p-6 border-b" 
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between space-y-4 md:space-y-0" 
+                    <div class="flex space-x-4" 
+                        <select class="border border-gray-300 rounded-lg px-3 py-2" 
+                            <optionAll Networks</option 
+                            <optionMTN Mobile Money</option 
+                            <optionAirtel Money</option 
+                            <optionBank Transfers</option 
+                        </select 
+                        <select class="border border-gray-300 rounded-lg px-3 py-2" 
+                            <optionAll Types</option 
+                            <optionWithdrawals</option 
+                            <optionDeposits</option 
+                            <optionBill Payments</option 
+                        </select 
+                    </div 
+                    <input type="text" placeholder="Search transactions..." class="border border-gray-300 rounded-lg px-4 py-2 w-full md:w-64" 
+                </div 
+            </div 
+            <div class="overflow-x-auto" 
+                <table class="w-full" 
+                    <thead class="bg-gray-50" 
+                        <tr 
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"Transaction ID</th 
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"Type</th 
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"Network</th 
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"Amount</th 
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"Commission</th 
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"Status</th 
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"Date</th 
+                        </tr 
+                    </thead 
+                    <tbody id="transactionTable" class="divide-y divide-gray-200" 
+                        <!-- Transactions will be populated here -- 
+                    </tbody 
+                </table 
+            </div 
+        </div 
+    </div 
+ 
+    <!-- Commission Settings Section -- 
+    <div id="commissions" class="section hidden" 
+        <div class="mb-8" 
+            <h2 class="text-3xl font-bold text-gray-800 mb-2"Commission Settings</h2 
+            <p class="text-gray-600"Configure commission rates for different transaction types</p 
+        </div 
+ 
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" 
+            <div class="bg-white rounded-xl card-shadow p-6" 
+                <h3 class="text-xl font-semibold mb-4"MTN Mobile Money</h3 
+                <div class="space-y-4" 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Withdrawal Commission (%)</label 
+                        <input type="number" value="2.5" class="w-full border border-gray-300 rounded-lg px-3 py-2" step="0.1" 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Deposit Commission (%)</label 
+                        <input type="number" value="1.5" class="w-full border border-gray-300 rounded-lg px-3 py-2" step="0.1" 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Bill Payment Commission (%)</label 
+                        <input type="number" value="1.0" class="w-full border border-gray-300 rounded-lg px-3 py-2" step="0.1" 
+                    </div 
+                    <button onclick="saveCommissionSettings('mtn')" class="w-full bg-yellow-500 text-white py-2 rounded-lg hover:bg-yellow-600 transition-colors"Update MTN Settings</button 
+                </div 
+            </div 
+ 
+            <div class="bg-white rounded-xl card-shadow p-6" 
+                <h3 class="text-xl font-semibold mb-4"Airtel Money</h3 
+                <div class="space-y-4" 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Withdrawal Commission (%)</label 
+                        <input type="number" value="2.0" class="w-full border border-gray-300 rounded-lg px-3 py-2" step="0.1" 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Deposit Commission (%)</label 
+                        <input type="number" value="1.2" class="w-full border border-gray-300 rounded-lg px-3 py-2" step="0.1" 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Bill Payment Commission (%)</label 
+                        <input type="number" value="0.8" class="w-full border border-gray-300 rounded-lg px-3 py-2" step="0.1" 
+                    </div 
+                    <button onclick="saveCommissionSettings('airtel')" class="w-full bg-red-500 text-white py-2 rounded-lg hover:bg-red-600 transition-colors"Update Airtel Settings</button 
+                </div 
+            </div 
+        </div 
+ 
+        <div class="mt-8 bg-white rounded-xl card-shadow p-6" 
+            <h3 class="text-xl font-semibold mb-4"Commission Distribution Account</h3 
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" 
+                <div 
+                    <label class="block text-sm font-medium text-gray-700 mb-2"Primary Commission Account</label 
+                    <input type="text" value="256-7XX-XXXX-XX" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="Account Number" 
+                </div 
+                <div 
+                    <label class="block text-sm font-medium text-gray-700 mb-2"Backup Account</label 
+                    <input type="text" value="256-7XX-XXXX-YY" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="Backup Account" 
+                </div 
+            </div 
+            <button onclick="updateCommissionAccount()" class="mt-4 bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors"Update Commission Account</button 
+        </div 
+    </div 
+ 
+    <!-- Charge Management Section -- 
+    <div id="charges" class="section hidden" 
+        <div class="mb-8" 
+            <h2 class="text-3xl font-bold text-gray-800 mb-2"Charge Management</h2 
+            <p class="text-gray-600"Set withdrawal charges and telecom company payments</p 
+        </div 
+ 
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" 
+            <div class="bg-white rounded-xl card-shadow p-6" 
+                <h3 class="text-xl font-semibold mb-4"Withdrawal Charges</h3 
+                <div class="space-y-4" 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"UGX 1,000 - 50,000</label 
+                        <input type="number" value="500" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="Charge Amount" 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"UGX 50,001 - 200,000</label 
+                        <input type="number" value="1000" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="Charge Amount" 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"UGX 200,001 - 1,000,000</label 
+                        <input type="number" value="2500" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="Charge Amount" 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Above UGX 1,000,000</label 
+                        <input type="number" value="5000" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="Charge Amount" 
+                    </div 
+                    <button onclick="updateWithdrawalCharges()" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors"Update Withdrawal Charges</button 
+                </div 
+            </div 
+ 
+            <div class="bg-white rounded-xl card-shadow p-6" 
+                <h3 class="text-xl font-semibold mb-4"Telecom Company Payments</h3 
+                <div class="space-y-4" 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"MTN Payment Rate (%)</label 
+                        <input type="number" value="0.5" class="w-full border border-gray-300 rounded-lg px-3 py-2" step="0.1" 
+                        <p class="text-xs text-gray-500 mt-1"Percentage paid to MTN per transaction</p 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Airtel Payment Rate (%)</label 
+                        <input type="number" value="0.4" class="w-full border border-gray-300 rounded-lg px-3 py-2" step="0.1" 
+                        <p class="text-xs text-gray-500 mt-1"Percentage paid to Airtel per transaction</p 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Bank Transfer Fee</label 
+                        <input type="number" value="1000" class="w-full border border-gray-300 rounded-lg px-3 py-2" 
+                        <p class="text-xs text-gray-500 mt-1"Fixed fee per bank transfer</p 
+                    </div 
+                    <button onclick="updateTelecomPayments()" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"Update Payment Rates</button 
+                </div 
+            </div 
+        </div 
+    </div 
+ 
+    <!-- Reports Section -- 
+    <div id="reports" class="section hidden" 
+        <div class="mb-8" 
+            <h2 class="text-3xl font-bold text-gray-800 mb-2"Financial Reports</h2 
+            <p class="text-gray-600"Comprehensive analytics and reporting</p 
+        </div 
+ 
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8" 
+            <div class="bg-white rounded-xl card-shadow p-6" 
+                <h3 class="text-lg font-semibold mb-4"Revenue Breakdown</h3 
+                <div class="space-y-3" 
+                    <div class="flex justify-between" 
+                        <span class="text-gray-600"MTN Transactions</span 
+                        <span class="font-semibold"UGX 18,500,000</span 
+                    </div 
+                    <div class="flex justify-between" 
+                        <span class="text-gray-600"Airtel Transactions</span 
+                        <span class="font-semibold"UGX 15,200,000</span 
+                    </div 
+                    <div class="flex justify-between" 
+                        <span class="text-gray-600"Bank Transfers</span 
+                        <span class="font-semibold"UGX 11,530,000</span 
+                    </div 
+                    <hr 
+                    <div class="flex justify-between font-bold" 
+                        <spanTotal Revenue</span 
+                        <span class="text-green-600"UGX 45,230,000</span 
+                    </div 
+                </div 
+            </div 
+ 
+            <div class="bg-white rounded-xl card-shadow p-6" 
+                <h3 class="text-lg font-semibold mb-4"Commission Earned</h3 
+                <div class="space-y-3" 
+                    <div class="flex justify-between" 
+                        <span class="text-gray-600"Withdrawal Commissions</span 
+                        <span class="font-semibold"UGX 850,000</span 
+                    </div 
+                    <div class="flex justify-between" 
+                        <span class="text-gray-600"Bill Payment Commissions</span 
+                        <span class="font-semibold"UGX 250,000</span 
+                    </div 
+                    <div class="flex justify-between" 
+                        <span class="text-gray-600"Transfer Commissions</span 
+                        <span class="font-semibold"UGX 150,000</span 
+                    </div 
+                    <hr 
+                    <div class="flex justify-between font-bold" 
+                        <spanTotal Commissions</span 
+                        <span class="text-purple-600"UGX 1,250,000</span 
+                    </div 
+                </div 
+            </div 
+ 
+            <div class="bg-white rounded-xl card-shadow p-6" 
+                <h3 class="text-lg font-semibold mb-4"Network Performance</h3 
+                <div class="space-y-3" 
+                    <div class="flex justify-between items-center" 
+                        <span class="text-gray-600"MTN Success Rate</span 
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm"98.5%</span 
+                    </div 
+                    <div class="flex justify-between items-center" 
+                        <span class="text-gray-600"Airtel Success Rate</span 
+                        <span class="bg-green-100 text-green-800 px-2 py-1 rounded text-sm"97.2%</span 
+                    </div 
+                    <div class="flex justify-between items-center" 
+                        <span class="text-gray-600"Bank Success Rate</span 
+                        <span class="bg-yellow-100 text-yellow-800 px-2 py-1 rounded text-sm"95.8%</span 
+                    </div 
+                </div 
+            </div 
+        </div 
+ 
+        <div class="mt-8 bg-white rounded-xl card-shadow p-6" 
+            <h3 class="text-xl font-semibold mb-4"Export Reports</h3 
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" 
+                <button onclick="exportReport('daily')" class="bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors"Export Daily Report</button 
+                <button onclick="exportReport('monthly')" class="bg-green-600 text-white py-3 px-4 rounded-lg hover:bg-green-700 transition-colors"Export Monthly Report</button 
+                <button onclick="exportReport('custom')" class="bg-purple-600 text-white py-3 px-4 rounded-lg hover:bg-purple-700 transition-colors"Custom Date Range</button 
+            </div 
+        </div 
+    </div 
+ 
+    <!-- Customization Section -- 
+    <div id="customize" class="section hidden" 
+        <div class="mb-8" 
+            <h2 class="text-3xl font-bold text-gray-800 mb-2"Platform Customization</h2 
+            <p class="text-gray-600"Personalize your DET platform interface and branding</p 
+        </div 
+ 
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" 
+            <div class="bg-white rounded-xl card-shadow p-6" 
+                <h3 class="text-xl font-semibold mb-4"Interface Customization</h3 
+                <div class="space-y-4" 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Primary Color Theme</label 
+                        <div class="flex space-x-3" 
+                            <button onclick="changeTheme('purple')" class="w-8 h-8 bg-purple-600 rounded-full border-2 border-white shadow-md"</button 
+                            <button onclick="changeTheme('blue')" class="w-8 h-8 bg-blue-600 rounded-full border-2 border-white shadow-md"</button 
+                            <button onclick="changeTheme('green')" class="w-8 h-8 bg-green-600 rounded-full border-2 border-white shadow-md"</button 
+                            <button onclick="changeTheme('red')" class="w-8 h-8 bg-red-600 rounded-full border-2 border-white shadow-md"</button 
+                            <button onclick="changeTheme('orange')" class="w-8 h-8 bg-orange-600 rounded-full border-2 border-white shadow-md"</button 
+                        </div 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Platform Name</label 
+                        <input type="text" value="DET - Daily Easy Transactions" class="w-full border border-gray-300 rounded-lg px-3 py-2" 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Welcome Message</label 
+                        <textarea class="w-full border border-gray-300 rounded-lg px-3 py-2 h-20" placeholder="Welcome to your financial platform..."Manage your FinTech operations across Uganda's major telecom networks</textarea 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Font Size</label 
+                        <select class="w-full border border-gray-300 rounded-lg px-3 py-2" 
+                            <optionSmall</option 
+                            <option selectedMedium</option 
+                            <optionLarge</option 
+                            <optionExtra Large</option 
+                        </select 
+                    </div 
+                    <button onclick="saveCustomization()" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors"Save Customization</button 
+                </div 
+            </div 
+ 
+            <div class="bg-white rounded-xl card-shadow p-6" 
+                <h3 class="text-xl font-semibold mb-4"Dashboard Layout</h3 
+                <div class="space-y-4" 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Quick Actions Layout</label 
+                        <div class="grid grid-cols-2 gap-3" 
+                            <button onclick="setLayout('grid')" class="p-3 border border-gray-300 rounded-lg hover:border-purple-500 text-center" 
+                                <div class="grid grid-cols-2 gap-1 mb-2" 
+                                    <div class="w-4 h-4 bg-gray-300 rounded"</div 
+                                    <div class="w-4 h-4 bg-gray-300 rounded"</div 
+                                    <div class="w-4 h-4 bg-gray-300 rounded"</div 
+                                    <div class="w-4 h-4 bg-gray-300 rounded"</div 
+                                </div 
+                                <span class="text-xs"Grid</span 
+                            </button 
+                            <button onclick="setLayout('list')" class="p-3 border border-gray-300 rounded-lg hover:border-purple-500 text-center" 
+                                <div class="space-y-1 mb-2" 
+                                    <div class="w-8 h-2 bg-gray-300 rounded"</div 
+                                    <div class="w-8 h-2 bg-gray-300 rounded"</div 
+                                    <div class="w-8 h-2 bg-gray-300 rounded"</div 
+                                </div 
+                                <span class="text-xs"List</span 
+                            </button 
+                        </div 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Show Statistics Cards</label 
+                        <div class="flex items-center space-x-3" 
+                            <input type="checkbox" id="showStats" checked class="rounded" 
+                            <label for="showStats" class="text-sm"Display dashboard statistics</label 
+                        </div 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Mobile View Priority</label 
+                        <select class="w-full border border-gray-300 rounded-lg px-3 py-2" 
+                            <optionTransactions First</option 
+                            <option selectedQuick Actions First</option 
+                            <optionStatistics First</option 
+                        </select 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Language</label 
+                        <select class="w-full border border-gray-300 rounded-lg px-3 py-2" 
+                            <option selectedEnglish</option 
+                            <optionLuganda</option 
+                            <optionRunyankole</option 
+                            <optionLuo</option 
+                        </select 
+                    </div 
+                </div 
+            </div 
+        </div 
+    </div 
+ 
+    <!-- USSD Portal Section -- 
+    <div id="ussd" class="section hidden" 
+        <div class="mb-8" 
+            <h2 class="text-3xl font-bold text-gray-800 mb-2"USSD Portal Management</h2 
+            <p class="text-gray-600"Configure USSD codes for non-smartphone users</p 
+        </div 
+ 
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8" 
+            <div class="bg-white rounded-xl card-shadow p-6" 
+                <h3 class="text-xl font-semibold mb-4"USSD Code Configuration</h3 
+                <div class="space-y-4" 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Main USSD Code</label 
+                        <input type="text" value="*185*7#" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="*XXX#" 
+                        <p class="text-xs text-gray-500 mt-1"Primary code to access DET services</p 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Quick Withdrawal Code</label 
+                        <input type="text" value="*185*7*1#" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="*XXX*X#" 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Balance Check Code</label 
+                        <input type="text" value="*185*7*2#" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="*XXX*X#" 
+                    </div 
+                    <div 
+                        <label class="block text-sm font-medium text-gray-700 mb-2"Bill Payment Code</label 
+                        <input type="text" value="*185*7*3#" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="*XXX*X#" 
+                    </div 
+                    <button onclick="updateUSSDCodes()" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors"Update USSD Codes</button 
+                </div 
+            </div 
+ 
+            <div class="bg-white rounded-xl card-shadow p-6" 
+                <h3 class="text-xl font-semibold mb-4"USSD Menu Structure</h3 
+                <div class="bg-gray-900 text-green-400 p-4 rounded-lg font-mono text-sm" 
+                    <div class="mb-2"Welcome to DET</div 
+                    <div class="mb-2"1. Withdraw Money</div 
+                    <div class="mb-2"2. Check Balance</div 
+                    <div class="mb-2"3. Pay Bills</div 
+                    <div class="mb-2"4. Buy Airtime</div 
+                    <div class="mb-2"5. Transfer Money</div 
+                    <div class="mb-2"6. Mini Statement</div 
+                    <div class="mb-2"0. Exit</div 
+                    <div class="text-yellow-400"Enter choice:</div 
+                </div 
+                <div class="mt-4 space-y-3" 
+                    <button onclick="editUSSDMenu()" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors"Edit Menu Structure</button 
+                    <button onclick="testUSSD()" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors"Test USSD Flow</button 
+                </div 
+            </div 
+        </div 
+ 
+        <div class="mt-8 bg-white rounded-xl card-shadow p-6" 
+            <h3 class="text-xl font-semibold mb-4"Network Integration Status</h3 
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6" 
+                <div class="text-center p-4 border border-gray-200 rounded-lg" 
+                    <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-3" 
+                        <span class="text-yellow-600 text-xl"📱</span 
+                    </div 
+                    <h4 class="font-semibold mb-2"MTN Uganda</h4 
+                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm"Connected</span 
+                    <p class="text-xs text-gray-500 mt-2"USSD Gateway Active</p 
+                </div 
+                <div class="text-center p-4 border border-gray-200 rounded-lg" 
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-3" 
+                        <span class="text-red-600 text-xl"📱</span 
+                    </div 
+                    <h4 class="font-semibold mb-2"Airtel Uganda</h4 
+                    <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm"Connected</span 
+                    <p class="text-xs text-gray-500 mt-2"USSD Gateway Active</p 
+                </div 
+                <div class="text-center p-4 border border-gray-200 rounded-lg" 
+                    <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3" 
+                        <span class="text-purple-600 text-xl"🏦</span 
+                    </div 
+                    <h4 class="font-semibold mb-2"Bank Integration</h4 
+                    <span class="bg-yellow-100 text-yellow-800 px-3 py-1 rounded-full text-sm"Pending</span 
+                    <p class="text-xs text-gray-500 mt-2"API Integration Required</p 
+                </div 
+            </div 
+        </div 
+    </div 
+</main 
+ 
+<!-- Transaction Modal -- 
+<div id="transactionModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50" 
+    <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4 card-shadow" 
+        <div class="flex justify-between items-center mb-6" 
+            <h3 id="modalTitle" class="text-xl font-semibold"New Transaction</h3 
+            <button onclick="closeTransactionModal()" class="text-gray-400 hover:text-gray-600" 
+                <span class="text-2xl"&times;</span 
+            </button 
+        </div 
+        <form id="transactionForm" class="space-y-4" 
+            <div 
+                <label class="block text-sm font-medium text-gray-700 mb-2"Network/Service</label 
+                <select id="networkSelect" class="w-full border border-gray-300 rounded-lg px-3 py-2" 
+                    <option value="mtn"MTN Mobile Money</option 
+                    <option value="airtel"Airtel Money</option 
+                    <option value="equity"Equity Bank</option 
+                    <option value="centenary"Centenary Bank</option 
+                    <option value="stanbic"Stanbic Bank</option 
+                    <option value="finca"FINCA Bank</option 
+                    <option value="dfcu"DFCU Bank</option 
+                </select 
+            </div 
+            <div 
+                <label class="block text-sm font-medium text-gray-700 mb-2"Phone Number/Account</label 
+                <input type="text" id="accountInput" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="256XXXXXXXXX" 
+            </div 
+            <div 
+                <label class="block text-sm font-medium text-gray-700 mb-2"Amount (UGX)</label 
+                <input type="number" id="amountInput" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="10000" 
+            </div 
+            <div id="billFields" class="hidden space-y-4" 
+                <div 
+                    <label class="block text-sm font-medium text-gray-700 mb-2"Bill Reference</label 
+                    <input type="text" id="billRef" class="w-full border border-gray-300 rounded-lg px-3 py-2" placeholder="Bill Reference Number" 
+                </div 
+            </div 
+            <button type="submit" class="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition-colors font-medium"Process Transaction</button 
+        </form 
+    </div 
+</div 
+ 
+<!-- Success Modal -- 
+<div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50" 
+    <div class="bg-white rounded-xl p-8 max-w-md w-full mx-4 card-shadow text-center" 
+        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4" 
+            <span class="text-green-600 text-2xl"✓</span 
+        </div 
+        <h3 class="text-xl font-semibold mb-2"Transaction Successful</h3 
+        <p id="successMessage" class="text-gray-600 mb-6"Your transaction has been processed successfully.</p 
+        <button onclick="closeSuccessModal()" class="bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"Close</button 
+    </div 
+</div 
+ 
+<script 
+    // Sample transaction data 
+    const transactions = [ 
+        { id: 'TXN001', type: 'Withdrawal', network: 'MTN', amount: 50000, commission: 1250, status: 'Completed', date: '2024-01-15 14:30' }, 
+        { id: 'TXN002', type: 'Bill Payment', network: 'Airtel', amount: 25000, commission: 200, status: 'Completed', date: '2024-01-15 13:45' }, 
+        { id: 'TXN003', type: 'Deposit', network: 'Bank', amount: 100000, commission: 1500, status: 'Pending', date: '2024-01-15 12:20' }, 
+        { id: 'TXN004', type: 'Airtime', network: 'MTN', amount: 10000, commission: 100, status: 'Completed', date: '2024-01-15 11:15' }, 
+        { id: 'TXN005', type: 'Withdrawal', network: 'Airtel', amount: 75000, commission: 1500, status: 'Completed', date: '2024-01-15 10:30' } 
+    ]; 
+ 
+    // Navigation functionality 
+    function showSection(sectionId) { 
+        // Hide all sections 
+        document.querySelectorAll('.section').forEach(section = { 
+            section.classList.add('hidden'); 
+        }); 
+         
+        // Show selected section 
+        document.getElementById(sectionId).classList.remove('hidden'); 
+         
+        // Update navigation 
+        document.querySelectorAll('.nav-btn').forEach(btn = { 
+            btn.classList.remove('border-purple-500', 'text-purple-600'); 
+            btn.classList.add('text-gray-600'); 
+        }); 
+         
+        event.target.classList.add('border-purple-500', 'text-purple-600'); 
+        event.target.classList.remove('text-gray-600'); 
+         
+        // Load section-specific data 
+        if (sectionId === 'transactions') { 
+            loadTransactions(); 
+        } 
+    } 
+ 
+    // Load transactions into table 
+    function loadTransactions() { 
+        const tbody = document.getElementById('transactionTable'); 
+        tbody.innerHTML = ''; 
+         
+        transactions.forEach(txn = { 
+            const row = document.createElement('tr'); 
+            row.className = 'transaction-row'; 
+            row.innerHTML = ` 
+                <td class="px-6 py-4 text-sm font-medium text-gray-900"${txn.id}</td 
+                <td class="px-6 py-4 text-sm text-gray-600"${txn.type}</td 
+                <td class="px-6 py-4 text-sm text-gray-600"${txn.network}</td 
+                <td class="px-6 py-4 text-sm text-gray-900"UGX ${txn.amount.toLocaleString()}</td 
+                <td class="px-6 py-4 text-sm text-green-600"UGX ${txn.commission.toLocaleString()}</td 
+                <td class="px-6 py-4" 
+                    <span class="px-2 py-1 text-xs rounded-full ${txn.status === 'Completed' ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'}" 
+                        ${txn.status} 
+                    </span 
+                </td 
+                <td class="px-6 py-4 text-sm text-gray-600"${txn.date}</td 
+            `; 
+            tbody.appendChild(row); 
+        }); 
+    } 
+ 
+    // Transaction modal functionality 
+    function showTransactionModal(type) { 
+        const modal = document.getElementById('transactionModal'); 
+        const title = document.getElementById('modalTitle'); 
+        const billFields = document.getElementById('billFields'); 
+         
+        // Set modal title based on transaction type 
+        const titles = { 
+            withdrawal: 'Mobile Money Withdrawal', 
+            deposit: 'Deposit Funds', 
+            airtime: 'Buy Airtime', 
+            electricity: 'Pay Electric Bill', 
+            water: 'Pay Water Bill', 
+            bank: 'Bank Transfer' 
+        }; 
+         
+        title.textContent = titles[type] || 'New Transaction'; 
+         
+        // Show/hide bill fields for utility payments 
+        if (type === 'electricity' || type === 'water') { 
+            billFields.classList.remove('hidden'); 
+        } else { 
+            billFields.classList.add('hidden'); 
+        } 
+         
+        modal.classList.remove('hidden'); 
+    } 
+ 
+    function closeTransactionModal() { 
+        document.getElementById('transactionModal').classList.add('hidden'); 
+        document.getElementById('transactionForm').reset(); 
+    } 
+ 
+    function closeSuccessModal() { 
+        document.getElementById('successModal').classList.add('hidden'); 
+    } 
+ 
+    // Form submission 
+    document.getElementById('transactionForm').addEventListener('submit', function(e) { 
+        e.preventDefault(); 
+         
+        const network = document.getElementById('networkSelect').value; 
+        const account = document.getElementById('accountInput').value; 
+        const amount = document.getElementById('amountInput').value; 
+         
+        if (!account || !amount) { 
+            alert('Please fill in all required fields'); 
+            return; 
+        } 
+         
+        // Simulate transaction processing 
+        closeTransactionModal(); 
+         
+        // Show success modal 
+        const successModal = document.getElementById('successModal'); 
+        const successMessage = document.getElementById('successMessage'); 
+        successMessage.textContent = `Transaction of UGX ${parseInt(amount).toLocaleString()} processed successfully via ${network.toUpperCase()}.`; 
+        successModal.classList.remove('hidden'); 
+         
+        // Add to transactions list 
+        const newTxn = { 
+            id: 'TXN' + String(transactions.length + 1).padStart(3, '0'), 
+            type: 'Transaction', 
+            network: network.toUpperCase(), 
+            amount: parseInt(amount), 
+            commission: Math.floor(parseInt(amount) * 0.025), 
+            status: 'Completed', 
+            date: new Date().toLocaleString() 
+        }; 
+         
+        transactions.unshift(newTxn); 
+    }); 
+ 
+    // Settings functions 
+    function saveCommissionSettings(network) { 
+        alert(`${network.toUpperCase()} commission settings updated successfully!`); 
+    } 
+ 
+    function updateCommissionAccount() { 
+        alert('Commission account settings updated successfully!'); 
+    } 
+ 
+    function updateWithdrawalCharges() { 
+        alert('Withdrawal charges updated successfully!'); 
+    } 
+ 
+    function updateTelecomPayments() { 
+        alert('Telecom payment rates updated successfully!'); 
+    } 
+ 
+    function exportReport(type) { 
+        alert(`${type.charAt(0).toUpperCase() + type.slice(1)} report exported successfully!`); 
+    } 
+ 
+    // New functions for enhanced features 
+    function uploadLogo() { 
+        alert('Logo upload functionality would integrate with file picker in actual app'); 
+    } 
+ 
+    function toggleBankDropdown() { 
+        const dropdown = document.getElementById('bankDropdown'); 
+        dropdown.classList.toggle('hidden'); 
+    } 
+ 
+    function changeTheme(color) { 
+        alert(`Theme changed to ${color}! This would update the entire interface color scheme.`); 
+    } 
+ 
+    function saveCustomization() { 
+        alert('Customization settings saved successfully!'); 
+    } 
+ 
+    function setLayout(layout) { 
+        alert(`Layout changed to ${layout} view!`); 
+    } 
+ 
+    function updateUSSDCodes() { 
+        alert('USSD codes updated successfully! Changes will be active within 24 hours.'); 
+    } 
+ 
+    function editUSSDMenu() { 
+        alert('USSD menu editor would open here for detailed customization'); 
+    } 
+ 
+    function testUSSD() { 
+        showUSSDSimulator(); 
+    } 
+ 
+    function showUSSDSimulator() { 
+        const modal = document.createElement('div'); 
+        modal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50'; 
+        modal.innerHTML = ` 
+            <div class="bg-white rounded-xl p-6 max-w-sm w-full mx-4" 
+                <h3 class="text-lg font-semibold mb-4"USSD Simulator</h3 
+                <div class="ussd-screen mb-4" 
+                    <divWelcome to DET</div 
+                    <div1. Withdraw Money</div 
+                    <div2. Check Balance</div 
+                    <div3. Pay Bills</div 
+                    <div4. Buy Airtime</div 
+                    <div5. Transfer Money</div 
+                    <div0. Exit</div 
+                    <div class="mt-2 text-yellow-400"Enter choice: <span class="animate-pulse"_</span</div 
+                </div 
+                <div class="flex justify-between" 
+                    <button onclick="this.parentElement.parentElement.parentElement.remove()" class="bg-gray-500 text-white px-4 py-2 rounded"Close</button 
+                    <button onclick="simulateUSSDChoice()" class="bg-green-600 text-white px-4 py-2 rounded"Simulate Choice</button 
+                </div 
+            </div 
+        `; 
+        document.body.appendChild(modal); 
+    } 
+ 
+    function simulateUSSDChoice() { 
+        alert('USSD choice simulated! In real implementation, this would process the user input.'); 
+    } 
+ 
+    // Initialize the page 
+    document.addEventListener('DOMContentLoaded', function() { 
+        loadTransactions(); 
+    }); 
+</script
